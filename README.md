@@ -6,3 +6,32 @@ We'll build up an implementation of a free monad over a coproduct of functors, f
 We'll create a couple of languages and interpreters, and run programs using these languages.
 
 We then do the same in the "final" style advocated by Oleg Kiselyov in "Typed Tagless Final Interpreters".
+
+
+## Prerequisites
+
+[Stack](http://haskellstack.org)
+
+## Instructions
+
+Compile with
+
+```
+stack build --file-watch --fast
+```
+
+Run the repl with
+
+```
+stack ghci
+```
+
+Go through the source files, replacing `undefined` with appropriate implementations.
+Some exercises are more in the nature of an exploration.
+
+Suggested order to proceed:
+
+* ALaCarte.hs
+* ALaCarteDSL.hs
+* ALaCarteImpl.hs
+* Tagless.hs
