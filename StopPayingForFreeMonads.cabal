@@ -1,0 +1,24 @@
+name:                StopPayingForFreeMonads
+version:             0.1.0.0
+synopsis:            Code for YOW LambdaJam 2016 workshop
+description:         Comparing "Datatypes a la carte" with "Typed tagless final interpreters" for typed languages with binding
+homepage:            https://github.com/mjhopkins/StopPayingForFreeMonads#readme
+license:             MIT
+license-file:        LICENSE
+author:              Mark Hopkins
+maintainer:          markjohnhopkins@gmail.com
+copyright:           Mark Hopkins
+category:            Experimental
+build-type:          Simple
+cabal-version:       >=1.10
+
+library
+  hs-source-dirs:      src
+  default-language:    Haskell2010
+  build-depends:       base >= 4.7 && < 5
+                     , containers
+                     , transformers
+                     , mtl
+                     , exceptions
+  exposed-modules:     ALaCarte
+                     , ALaCarteDSL
