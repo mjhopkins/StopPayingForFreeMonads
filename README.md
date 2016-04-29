@@ -35,3 +35,16 @@ Suggested order to proceed:
 * ALaCarteDSL.hs
 * ALaCarteImpl.hs
 * Tagless.hs
+
+
+## Supplementary exercises
+
+Now we're going to just deal with expressions instead of "statements"
+
+i.e. drop the monad requirement.
+
+We'll build towards developing a library for fast extended regular expressions.
+
+* Expressions.hs
+* Regex.hs
+* RegexFinal.hs
