@@ -1,7 +1,25 @@
+{-# LANGUAGE TypeOperators         #-}
+{-# LANGUAGE DataKinds             #-}
+{-# LANGUAGE DeriveFunctor         #-}
+{-# LANGUAGE StandaloneDeriving    #-}
+{-# LANGUAGE FlexibleContexts      #-}
+{-# LANGUAGE FlexibleInstances     #-}
+{-# LANGUAGE UndecidableInstances  #-}
+{-# LANGUAGE MultiParamTypeClasses #-}
+{-# LANGUAGE RankNTypes            #-}
+{-# LANGUAGE PartialTypeSignatures #-}
+{-# LANGUAGE ScopedTypeVariables   #-}
+{-# LANGUAGE GADTs                 #-}
+
 module ALaCarteImpl where
 
 import ALaCarte
 import ALaCarteDSL
+
+import Control.Monad.State
+import Control.Monad.Reader (MonadReader, ReaderT)
+import Data.Map
+
 
 -- calculator language impl
 
@@ -33,10 +51,10 @@ instance (Eq k, MonadReader [(k, v)] m) => Interpret (Lookup k v) m where
 -- run test programs at the REPL
 
 sayHello :: IO ()
-sayHello = interpret sayHelloProg
+sayHello = interpret (sayHelloProg :: Free (Ask :+: Tell) ())
 
 runTick :: State Int Int
-runTick = interpret tick
+runTick = interpret (tick :: Free (Recall :+: Incr) Int)
 
 calcEx1 :: StateT Int IO Int
 calcEx1 = interpret prog
@@ -48,7 +66,7 @@ calcEx1 = interpret prog
          clear
          return t
 
-calcEx1 :: StateT Int IO Int
+calcEx2 :: StateT Int IO Int
 calcEx2 = interpret prog
   where
   prog :: Free (Clear :+: Recall :+: Incr :+: Tell :+: Ask) Int
