@@ -22,6 +22,7 @@ library
                      , exceptions
   exposed-modules:     ALaCarte
                      , ALaCarteDSL
+                     , ALaCarteImpl
                      , Tagless
                      , Expressions
                      , Regex
